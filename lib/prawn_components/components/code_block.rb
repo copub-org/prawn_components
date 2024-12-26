@@ -1,24 +1,23 @@
 module PrawnComponents
   module Components
     module CodeBlock
-      def code_block(value, language)
+      def code_block(value, language, options = {})
         formatter = Rouge::Formatters::Prawn.new
         lexer = get_lexer(language)
+        font_family = options.fetch(:font_family, 'Consolas')
+        leading = options.fetch(:leading, 5)
 
-        default_leading(5)
         span(540) do
           move_down(5)
           span(520, position: 10) do
             move_down(10)
-            font 'Consolas' do
-              formatted_text(formatter.format(lexer.new.lex(value)))
+            font font_family do
+              formatted_text(formatter.format(lexer.new.lex(value)), leading: leading)
             end
           end
 
           move_down(30)
         end
-
-        default_leading(5)
       end
 
       private

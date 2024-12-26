@@ -1,4 +1,4 @@
-# pdf.v1_table_of_contents(
+# pdf.table_of_contents(
 #   [
 #     [
 #       'Preface',

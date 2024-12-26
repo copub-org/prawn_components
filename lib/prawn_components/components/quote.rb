@@ -2,6 +2,9 @@ module PrawnComponents
   module Components
     module Quote
       def quote(value, options = {})
+        text_color = options.fetch(:text_color, '6A737D')
+        border_color = options.fetch(:border_color, 'DFE2E5')
+
         callback = options.key?(:callback) ? options[:callback] : lambda { |x| x }
         parsed_value = if value.is_a?(Array)
           value.map { |e| [callback.call(e)] }
@@ -10,8 +13,6 @@ module PrawnComponents
         end
 
         quote_rows = parsed_value
-        text_color = '6A737D'
-        border_color = 'DFE2E5'
         padding = [5, 0, 5, 15]
         border_width = 3
 
